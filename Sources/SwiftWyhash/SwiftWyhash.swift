@@ -1,4 +1,4 @@
-struct WyhashGenerator {
+public struct WyhashGenerator: RandomNumberGenerator {
     private var seed : UInt64
 
     private static let multiplier1 : UInt64 = 0xa3b195354a39b70d
@@ -9,7 +9,7 @@ struct WyhashGenerator {
         seed = userSeed;
     }
 
-    mutating func random() -> UInt64 {
+    public mutating func next() -> UInt64 {
         seed &+= WyhashGenerator.increment
         let fullmult1 = seed.multipliedFullWidth(by: WyhashGenerator.multiplier1)
         let m1 = fullmult1.high ^ fullmult1.low;
