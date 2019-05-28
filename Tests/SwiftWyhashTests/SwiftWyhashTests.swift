@@ -1,4 +1,4 @@
-You import XCTest
+import XCTest
 @testable import SwiftWyhash
 
 final class SwiftWyhashTests: XCTestCase {
