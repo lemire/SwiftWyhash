@@ -17,8 +17,7 @@ final class SwiftWyhashTests: XCTestCase {
 
     func testNumberSequence() {
         var numbers = sequence(state: Wyhash64(seed: 0)) {
-            (g: inout Wyhash64) -> Int? in
-            return Int.random(in: Int.min...Int.max, using: &g)
+            return Int.random(in: Int.min...Int.max, using: &$0)
         }
         // Array initializer takes a copy of numbers value,
         // because `UnfoldSequence` and `Wyhash64` are both value types.
