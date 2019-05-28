@@ -10,7 +10,7 @@ final class SwiftWyhashTests: XCTestCase {
     }
     
     func testShuffled() {
-        var g = Wyhash64(userSeed: 0)
+        var g = Wyhash64(seed: 0)
         XCTAssertEqual((1...10).shuffled(using: &g),
                        [1, 6, 2, 8, 4, 7, 5, 10, 3, 9])
     }
