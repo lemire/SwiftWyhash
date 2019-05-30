@@ -1,11 +1,14 @@
 # SwiftWyhash
 
-This is an implementation of the random number generator `wyhash` in Swift.
+This is Swift port of pseudorandom number generator `wyrand` from
+[wyhash](https://github.com/wangyi-fudan/wyhash) by Wang Yi.
+
+It conforms to [RandomNumberGenerator](https://developer.apple.com/documentation/swift/randomnumbergenerator) protocol.
 
 Usage:
 
 ```swift
-var gen = Wyhash64(seed: 0)
+var gen = WyRand(seed: 42)
 gen.next() // generates a 64-bit random number
 
 (1...10).shuffled(using: &gen)
