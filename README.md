@@ -1,5 +1,8 @@
 # SwiftWyhash
 
+<a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg"/></a>
+[![Build Status](https://travis-ci.org/lemire/SwiftWyhash.svg?branch=master)](https://travis-ci.org/lemire/SwiftWyhash)
+
 This is an implementation of the random number generator `wyhash` in Swift.
 
 Usage:
