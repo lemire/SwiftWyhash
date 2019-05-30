@@ -1,16 +1,15 @@
-public struct Wyhash64: RandomNumberGenerator {
+/// Wang Yi's PRNG from wyhash
+/// See https://github.com/wangyi-fudan/wyhash/
+public struct WyRand: RandomNumberGenerator {
     private var state : UInt64
 
     init(seed : UInt64) {
-        self.state = seed
+        state = seed
     }
 
     public mutating func next() -> UInt64 {
-        self.state &+= 0x60bee2bee120fc15
-        let t1 = self.state.multipliedFullWidth(by: 0xa3b195354a39b70d)
-        let m1 = t1.high ^ t1.low
-        let t2 = m1.multipliedFullWidth(by: 0x1b03738712fad5c9)
-        let m2 = t2.high ^ t2.low
-        return m2
+        state &+= 0xa0761d6478bd642f
+        let mul = state.multipliedFullWidth(by: state ^ 0xe7037ed1a0b428db)
+        return mul.high ^ mul.low
     }
 }
