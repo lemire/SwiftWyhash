@@ -3,7 +3,7 @@
 public struct WyRand: RandomNumberGenerator {
     private var state : UInt64
 
-    init(seed : UInt64) {
+    public init(seed : UInt64) {
         state = seed
     }
 
