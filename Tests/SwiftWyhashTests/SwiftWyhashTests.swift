@@ -29,6 +29,42 @@ final class SwiftWyhashTests: XCTestCase {
                        [-1599892964753483310, -3794469254412942534])
         XCTAssertEqual(numbers.next(), -1599892964753483310)
         XCTAssertEqual(numbers.next(), -3794469254412942534)
+
+        measure {
+          _ = Array(numbers.lazy.prefix(524288))
+        }
+    }
+
+    func testNumberSequenceBoundedPerformance() {
+        let numbers = sequence(state: WyRand(seed: 42)) {
+          Int.random(in: Int.min...(Int.max / 2 + 1), using: &$0)
+        }
+        measure {
+          _ = Array(numbers.lazy.prefix(524288))
+        }
+    }
+
+    func testRawGeneratorPerformance() {
+        var g = WyRand(seed: 42)
+        var a = Array(repeating: UInt64(0), count: 524288)
+
+        measure {
+            for i in a.indices {
+                a[i] = g.next()
+            }
+        }
+    }
+
+    func testBoundedGeneratorPerformance() {
+        var g = WyRand(seed: 42)
+        var a = Array(repeating: UInt64(0), count: 524288)
+        let b = UInt64.max / 2 + 1
+
+        measure {
+            for i in a.indices {
+                a[i] = g.next(upperBound: b)
+            }
+        }
     }
 
     static var allTests = [
