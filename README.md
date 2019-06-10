@@ -16,4 +16,8 @@ gen.next() // generates a 64-bit random number
 (1...10).shuffled(using: &gen)
 ```
 
+For a benchmark, see [SwiftWyhashBenchmark](https://github.com/lemire/SwiftWyhashBenchmark).
+
+
+
 Further reading: [The fastest conventional random number generator that can pass Big Crush?](https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/)
